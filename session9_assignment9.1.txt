@@ -1,0 +1,69 @@
+Write a program to create a class HDTV with the properties:
+• Brandname
+• Size
+Create Another class having an ArrayList and add 3 objects of HDTV into it.
+6. Expected Output
+Display HDTV objects in sorted order of size (Use Comparator)
+
+
+
+
+package session9;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+
+public class Tv 
+{
+public static void main(String[] args) 
+{
+	HDTV one=new HDTV("LG",49);
+		
+    ArrayList<HDTV> al=new ArrayList<HDTV>();
+
+    al.add(one);
+    al.add(new HDTV("Samsung",55));
+    al.add(new HDTV("Panasonic",32));    
+    
+    System.out.println("Before Sorting:");
+    for (HDTV hdtv : al)
+    {
+	System.out.println(hdtv);	
+	}
+    System.out.println("-----------------------------");
+   System.out.println("After sorting the ArrayList:");
+   Collections.sort(al);
+   
+   for (HDTV hdtv : al)
+   {
+	System.out.println(hdtv);	
+	}
+   
+}
+}
+
+
+class HDTV implements Comparable<HDTV>
+{
+	String Brand_name;
+	int size;
+
+	public HDTV(String brand_name, int size) {
+		super();
+		Brand_name = brand_name;
+		this.size = size;		
+	}
+
+	@Override
+	public String toString() {
+		return "HDTV [Brand_name=" + Brand_name + ", size=" + size +" inch" +"]";
+	}
+
+	@Override
+	public int compareTo(HDTV o) 
+	{		
+      return size-o.size;
+	}
+	
+}
